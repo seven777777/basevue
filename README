@@ -1,0 +1,101 @@
+# 项目说明
+
+## 项目简介
+
+
+    相关文档
+    vue : https://cn.vuejs.org/
+    vuex: https://vuex.vuejs.org/zh/guide/
+    element-ui:http://element.eleme.io
+    百度地图：http://lbsyun.baidu.com/index.php?title=jspopular
+    mapv:http://lbsyun.baidu.com/index.php?title=jspopular
+    lodash:https://www.lodashjs.com/
+    echats:http://echarts.baidu.com/
+
+
+
+## 结构：
+```
+...src  
+    ...api  全局接口  
+    ...assets   静态资源  
+        ...imgs 公共图片资源  
+        ...styles 样式文件  
+            ...theme    主题  
+            ...common.scss 全局样式    
+            ...value.scss   全局字号、颜色样式变量  
+            ...mixin.scss   全局scss mixin  
+    ...common 全局业务  
+        ...directive  指令库  
+        ...filters  过滤器库  
+        ...mixins 业务mixins  
+        ...service 业务抽象公共类  
+    ...components 全局公共组件库  
+    ...config   项目配置 
+    ...lib 第三方类库，非npm安装存放目录 
+    ...modules  项目业务组件（按模块划分）  
+        ...layout   框架（topbar,left等结构布局）  
+        ...index    以index示范，业务组件按模块命名 入口index,可分为list.vue,detail.vue,分别对应list.index,list.scss...以此类推命名  
+            ...index.vue 组件入口模板  
+            ...index.js 类似控制器  
+            ...index.scss   样式文件  
+            ...store  组件store目录，一个大模块共用或分开都可以  
+            ...api  业务接口目录  
+    ...router   路由  
+    ...store   全局  
+        ...globalStore.js 全局store  
+        ...store.js 项目store入口文件，需要在此引入模块内的store被注入映射       
+    ...utils 项目工具类  
+    ...App.vue   
+    ...main.js 入口  
+```
+## 说明
+    
+    ```模块中store需要在外部store中引入映射
+
+    如：
+
+        index模块下store中的index.js
+
+        需要做如下操作
+
+        import IndexStore from '@/modules/index/store';
+
+        const store = new Vuex.Store({
+        modules: {
+        
+            IndexStore,
+
+        }
+        });
+        
+    ```
+
+    ```左侧菜单配置在-modlus/layout/index.js中配置```
+
+    ```
+    需要主题切换的组件、元素，需要在主题中定义相应的类名，然后应用，
+    如dark.scss
+        $base:#000;
+        .basecolor{color:$base}
+
+     相关组件中应用
+     <div class="top basecolor"> 主题色</div>  
+
+     尽量将主题色标等也以变量模式在头部定义，以便后期统一维护修改。
+    
+    ```
+
+
+    
+
+## 注意
+    开发前请熟悉项目结构，按现在方式进行，如有好的建议，请事先沟通提出。    
+
+## 项目运行
+
+    项目新运行请执行npm install,
+    之后：
+    dev: cmd 执行npm start
+    build: cmd 执行npm run build
+    默认运行端口8180,

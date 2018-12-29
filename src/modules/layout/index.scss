@@ -1,0 +1,123 @@
+.layoutWrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+
+
+    .layoutTopbar {
+        height: 80px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-sizing: border-box;
+        color: #fff;
+        padding: 10px;
+
+        .logo {
+            float: left;
+            line-height: 60px;
+        }
+    }
+
+    .layoutAside {
+
+        position: absolute;
+        left: 0;
+        width: 200px;
+        bottom: 0;
+        top: 80px;
+        background: #d1d1d1;
+        box-sizing: border-box;
+
+        overflow-y: auto;
+
+        .menus {
+
+            /deep/ .menu {
+                width: 100%;
+                text-align: left;
+                font-size: 14px;
+                color: #666;
+                line-height: 35px;
+                background: #ddd;
+                overflow: hidden;
+
+                /deep/ a {
+                    cursor: pointer;
+                    display: block;
+                    width: 100%;
+                    padding-left: 5px;
+
+                    &:hover {
+                        color: #fff;
+                        background: #000;
+                    }
+                }
+
+
+
+
+            }
+
+
+            &>.menu {
+                a {
+                    padding-left: 10px;
+                }
+
+                /deep/ ul .menu {
+                    a {
+                        padding-left: 15px;
+                    }
+
+                    /deep/ ul .menu {
+                        a {
+                            padding-left: 20px;
+                        }
+                    }
+
+                }
+
+            }
+
+
+            /deep/ ul {
+                height: 0;
+                max-height: 0;
+                overflow: hidden;
+
+
+            }
+
+            /deep/ .selected {
+                color: red;
+            }
+
+            /deep/ .active {
+                height: auto;
+                overflow: hidden;
+                max-height: 1000px;
+                transition: max-height 3s;
+
+            }
+
+            &>.menu {}
+
+        }
+    }
+
+    .layoutMain {
+        position: absolute;
+        left: 200px;
+        bottom: 0;
+        top: 80px;
+        right: 10px;
+        background: #fff;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+}
